@@ -11,16 +11,27 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
 
     - name: Linting with Super-Linter
-      uses: github/super-linter@v2
+      uses: github/super-linter@v3
       env:
        DEFAULT_BRANCH: main
        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
     - name: Run E2E Tests
       run: |
-        # Ajoutez  les tests E2E 
+        # Ajoutez les tests E2E 
+     
+    - name: Check SVN Changes
+      run: |
+        # Ajoutez la commande pour vérifier les changements SVN
+
+    - name: Check Git Changes
+      run: |
+        # Ajoutez la commande pour vérifier les changements Git
