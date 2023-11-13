@@ -1,37 +1,17 @@
-name: CI Workflow
+name: Starter Workflow Demo
 
 on:
   push:
-    branches:
-      - main
-    tags:
-      - main
+    branches: [ $default-branch ]
+  pull_request:
+    branches: [ $default-branch ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest]
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-    - name: Linting with Super-Linter
-      uses: super-linter/super-linter/slim@v5
-      env:
-       DEFAULT_BRANCH: main
-       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    
-    - name: Run E2E Tests
-      run: |
-        # Ajoutez les tests E2E 
-     
-    - name: Check SVN Changes
-      run: |
-        # Ajoutez la commande pour vérifier les changements SVN
-
-    - name: Check Git Changes
-      run: |
-        # Ajoutez la commande pour vérifier les changements Git
+      - name: demo workflow job
+        run: echo This is a demo start workflow
