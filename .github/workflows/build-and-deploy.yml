@@ -15,13 +15,12 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Run E2E Tests
-      run: |
-        # Ajoutez  les tests E2E
-
     - name: Linting with Super-Linter
-      uses: github/super-linter@v3
+      uses: github/super-linter@v2
       env:
        DEFAULT_BRANCH: main
        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+    
+    - name: Run E2E Tests
+      run: |
+        # Ajoutez  les tests E2E 
