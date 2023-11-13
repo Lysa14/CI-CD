@@ -19,8 +19,8 @@ jobs:
       run: |
         # Ajoutez  les tests E2E
 
-    - name: Linting
-      uses: github/linting@v3
+    - name: Linting with Super-Linter
+      uses: github/super-linter@v3
       env:
        DEFAULT_BRANCH: main
        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
