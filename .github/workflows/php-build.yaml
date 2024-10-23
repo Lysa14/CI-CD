@@ -1,0 +1,30 @@
+name: Name of the workflow
+on:
+  push:
+    branches:
+      - master # Branch to trigger the workflow
+
+
+jobs:
+   # Modifiy the name of the job
+   name_of_the_job:
+    runs-on: ubuntu-latest # Operating system
+    
+
+# ************************************************************************************************
+# *** if you want to run the job on a multiple versions of PHP, you can use the matrix strategy***
+    # strategy:
+    #   matrix:
+    #     php_version: [7.4 , 8.0, 8.1, 8.2]
+# *********************************************************************************************** 
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2 # This is the action to setup PHP , To debug any issues, you can use the 'verbose' tag instead of 'v2'
+        with:
+          php-version: '7.4'   # or ${{ matrix.php_version }}
+          extensions: imagick, swoole  # Here you can Add extensions 
+          tools: composer, phpunit # Here you can Add tools like composer, phpunit,ImageMagick..
